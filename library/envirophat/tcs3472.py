@@ -27,8 +27,9 @@ CH_GREEN = 1
 CH_BLUE = 2
 CH_CLEAR = 3
 
-class tcs3472:
+class tcs3472(object):
     def __init__(self, i2c_bus=None, addr=ADDR):
+        object.__init__(self)
         self.addr = addr
         self.i2c_bus = i2c_bus
         if not hasattr(i2c_bus, "read_word_data") or not hasattr(i2c_bus, "write_byte_data"):

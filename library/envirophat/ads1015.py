@@ -18,8 +18,9 @@ PGA_1_024V = 1024
 PGA_0_512V = 512
 PGA_0_256V = 256
 
-class ads1015:
+class ads1015(object):
     def __init__(self, i2c_bus=None, addr=ADDR):
+        object.__init__(self)
         self._over_voltage = [False] * 4
 
         self.i2c_bus = i2c_bus

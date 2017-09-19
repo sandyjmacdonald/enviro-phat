@@ -100,7 +100,7 @@ class vector:
     def __str__(self):
         return str((self.x, self.y, self.z))
 
-class lsm303d:
+class lsm303d(object):
     _mag = [0,0,0]
     _accel = [0,0,0]
     _tiltcomp = [0,0,0]
@@ -110,6 +110,7 @@ class lsm303d:
     _tilt_heading_degrees=0
 
     def __init__(self, i2c_bus=None, addr=ADDR):
+        object.__init__(self)
         self.i2c_bus = i2c_bus
         if not hasattr(i2c_bus, "write_byte_data") or not hasattr(i2c_bus, "read_byte_data"):
             raise TypeError("Object given for i2c_bus must implement write_byte_data and read_byte_data methods")

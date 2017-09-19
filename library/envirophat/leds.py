@@ -5,14 +5,14 @@ try:
 except ImportError:
     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
-
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.OUT)
-GPIO.output(4, 0)
-
-class leds:
+class leds(object):
     def __init__(self, status=0):
+        object.__init__(self)
+        GPIO.setwarnings(False)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(4, GPIO.OUT)
+        GPIO.output(4, 0)
+
         self.status = status
 
     def on(self):

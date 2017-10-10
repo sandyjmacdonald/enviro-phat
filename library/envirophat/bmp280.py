@@ -153,7 +153,7 @@ class bmp280:
         """Return the current air pressure."""
 
         self.update()
-        return self._pressure
+        return self._pressure / 10.0
 
     def altitude(self, qnh=QNH):
         """Return the current approximate altitude.
@@ -161,7 +161,7 @@ class bmp280:
         :param qnh: Your local value for atmospheric pressure adjusted to sea level.
 
         """
-        return 44330.0 * (1.0 - pow(self.pressure() / (qnh*100), (1.0/5.255))) # Calculate altitute from pressure & qnh
+        return 44330.0 * (1.0 - pow((self.pressure() * 10) / (qnh*100), (1.0/5.255))) # Calculate altitute from pressure & qnh
 
     def update(self):
         """Update stored temperature and pressure values.
